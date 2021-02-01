@@ -1,0 +1,32 @@
+site_name:           DiscretePOMP.jl
+repo_url:            https://github.com/mjb3/DiscretePOMP.jl
+site_description:    Bayesian parameter inference for Discrete state space Partially Observed Markov Processes in Julia.
+site_author:         Martin Burke
+# theme: readthedocs
+theme:               cyborg
+# theme:               bootstrap386
+
+# extra_css:
+#   - assets/Documenter.css
+
+extra_javascript:
+  - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML
+  - assets/mathjaxhelper.js
+  - https://cdn.rawgit.com/pcooksey/bibtex-js/ef59e62c/src/bibtex_js.js
+
+markdown_extensions:
+  - codehilite
+  - extra
+  - tables
+  - fenced_code
+  - mdx_math # For LaTeX
+
+docs_dir: 'build'
+
+pages:
+- Introduction: index.md
+- Models: models.md
+- Sample code: examples.md
+- Package manual: manual.md
+# - Monte Carlo introduction: monte_carlo_intro/monte_carlo_intro.md
+# - MCMC introduction: mcmc_intro/mcmc_intro.md
