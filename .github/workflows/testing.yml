@@ -1,4 +1,4 @@
-name: DataRegistryUtils testing
+name: DiscretePOMP testing
 
 # run workflow on push
 on:
