@@ -1,6 +1,6 @@
 # dummy test result
-using DPOMPs
-# using DPOMPs.ARQMCMC
+using DiscretePOMP
+# using DiscretePOMP.ARQMCMC
 import Random
 import Distributions
 # import Test

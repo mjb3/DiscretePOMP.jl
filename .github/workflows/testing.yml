@@ -1,0 +1,18 @@
+name: DataRegistryUtils testing
+
+# run workflow on push
+on:
+  push:
+
+jobs:
+  dru-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      run: julia --project=test/ -e 'using Pkg; Pkg.add("Distributions"); Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
+    - name: Run tests
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # For authentication with GitHub Actions token
+      run: julia --project=test/ test/runtests.jl

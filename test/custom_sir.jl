@@ -1,8 +1,8 @@
-import DPOMPs
+import DiscretePOMP
 import Distributions
 
 ## define model
-model = DPOMPs.generate_model("SIR", [119, 1, 0]);
+model = DiscretePOMP.generate_model("SIR", [119, 1, 0]);
 model.t0_index = 3
 
 # add "medium" prior
@@ -41,11 +41,11 @@ for i in eachindex(t)
     push!(evt_tm, t[i])
     push!(evt_tp, 2)
 end
-x0 = DPOMPs.generate_custom_x0(model, y, [0.001, 0.1, -4.0], evt_tm, evt_tp);
+x0 = DiscretePOMP.generate_custom_x0(model, y, [0.001, 0.1, -4.0], evt_tm, evt_tp);
 println("x0 log like: ", x0.log_like)
 
 ## custom proposal algorithm
-function custom_proposal(model::DPOMPs.PrivateDPOMPsModel, xi::DPOMPs.MarkovState, xf_parameters::DPOMPs.ParameterProposal)
+function custom_proposal(model::DiscretePOMP.PrivateDiscretePOMPModel, xi::DiscretePOMP.MarkovState, xf_parameters::DiscretePOMP.ParameterProposal)
     t0 = xf_parameters.value[model.t0_index]
     ## move
     seq_f = deepcopy(xi.trajectory)
@@ -72,10 +72,10 @@ function custom_proposal(model::DPOMPs.PrivateDPOMPsModel, xi::DPOMPs.MarkovStat
     # compute ln g(x)
     prop_lk = 1.0
     ## evaluate full likelihood for trajectory proposal and return
-    return DPOMPs.MarkovState(xi.parameters, seq_f, DPOMPs.compute_full_log_like(model, xi.parameters.value, seq_f), prop_lk, 3)
+    return DiscretePOMP.MarkovState(xi.parameters, seq_f, DiscretePOMP.compute_full_log_like(model, xi.parameters.value, seq_f), prop_lk, 3)
 end # end of std proposal function
 
 ## run MCMC
 rs = run_custom_single_chain_analysis(model, y, custom_proposal, x0, 120000, 20000)
-DPOMPs.tabulate_results(rs, true)
+DiscretePOMP.tabulate_results(rs, true)
 # print_mcmc_results(rs, "out/custom_mcmc_example/")

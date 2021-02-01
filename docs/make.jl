@@ -1,4 +1,4 @@
-using Documenter, DPOMPs
+using Documenter, DiscretePOMP
 
 makedocs(sitename="DiscretePOMP.jl docs", pages = ["index.md", "models.md", "examples.md", "manual.md"])
 

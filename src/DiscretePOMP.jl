@@ -116,10 +116,10 @@ Returns a SimResults type containing the trajectory and observations data, or an
 
 **Example**
 ```@repl
-using DPOMPs
+using DiscretePOMP
 m = generate_model("SIR", [50, 1, 0])
-x = DPOMPs.gillespie_sim(model, [0.005, 0.12])
-println(DPOMPs.plot_trajectory(x))
+x = DiscretePOMP.gillespie_sim(model, [0.005, 0.12])
+println(DiscretePOMP.plot_trajectory(x))
 ```
 
 """

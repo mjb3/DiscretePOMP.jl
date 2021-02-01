@@ -28,7 +28,7 @@ Individuals are also assumed to 'migrate' between states randomly at rates defin
 The package includes a set of predefined models, which can be instantiated easily:
 
 ```@repl 1
-import DPOMPs               # simulation / inference for epidemiological models
+import DiscretePOMP               # simulation / inference for epidemiological models
 import Random               # other assorted packages used incidentally
 import DataFrames
 

@@ -7,7 +7,7 @@ This section provides instructions for generating model instances in **DiscreteP
 The package includes a set of predefined models, which can be instantiated easily:
 
 ```@repl 1
-import DPOMPs               # simulation / inference for epidemiological models
+import DiscretePOMP               # simulation / inference for epidemiological models
 import Distributions        # priors
 
 model = generate_model("SIS", [100,1])
@@ -63,7 +63,7 @@ The canonical Kermack-McKendrick susceptible-infectious-recovered model is perha
 ```
 
 ```@repl 1
-using DPOMPs
+using DiscretePOMP
 generate_model("SIR", [100, 1, 0])
 ```
 

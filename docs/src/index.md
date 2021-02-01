@@ -25,7 +25,7 @@ In applied situations (e.g. like a scientific study) such systems are often diff
 
 The dynamics (how the system changes over time) of the **SIR**, and other **DSS** models, can be represented in continuous time by [a set of coupled] **Markov Processes**. More specifically, we can define a probability density (a 'likelihood function' in Bayesian parlance) that governs the time-evolution of the system under study.
 
-Combining these concepts, we have a general class of statistical model: **Discrete-state-space Partially Observed Markov Processes, or DPOMPs.**
+Combining these concepts, we have a general class of statistical model: **Discrete-state-space Partially Observed Markov Processes, or DiscretePOMP.**
 
 Furthermore, given some applicable [partially complete] scientific data, they yield a paradigm for (in this case, Bayesian) *statistical inference* based on that model class. That is, we can infer [the *likely* value of] unknown quantities, such as the *unknown* time of a *known* event (like the introduction of a pathogen,) or a model parameter that characterises the infectiousness of that pathogen.
 
