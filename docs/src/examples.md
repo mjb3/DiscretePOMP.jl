@@ -26,8 +26,8 @@ Individuals are also assumed to 'migrate' back and forth between states, randoml
 
 ```math
 \begin{aligned}
-\theta := model parameters
-\pi(\theta|y) := posterior distribution \\
+\theta := parameters  \\
+y := data \\
 \pi(y|\theta) := f(\theta)  \\
 \pi(y) := model evidence
 \end{aligned}
