@@ -15,19 +15,23 @@ A well-known example is the **Kermack-McKendrick susceptible-infectious-suscepti
 <img src="https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/master/docs/img/sir.png" alt="SIR model" style="height: 80px;"/>
 ```
 
-See the [Simple example] for a brief primer on DSS.
-
-[ADD LINK]
+See the [Simple example](@ref) for a brief primer on DSS.
 
 In applied situations (e.g. like a scientific study) such systems are often difficult to *directly* observe, and so they are referred to in context as being **Partially Observed**.
 
 The dynamics (how the system changes over time) of the **SIR**, and other **DSS** models, can be represented in continuous time by [a set of coupled] **Markov Processes**. More specifically, we can define a probability density (a 'likelihood function' in Bayesian parlance) that governs the time-evolution of the system under study.
 
-Combining these concepts, we have a general class of statistical model: **Discrete-state-space Partially Observed Markov Processes, or DiscretePOMP.**
+Combining these concepts, we have a general class of statistical model: **Discrete-state-space Partially Observed Markov Processes, or Discrete POMP.**
 
 Furthermore, given some applicable [partially complete] scientific data, they yield a paradigm for (in this case, Bayesian) *statistical inference* based on that model class. That is, we can infer [the *likely* value of] unknown quantities, such as the *unknown* time of a *known* event (like the introduction of a pathogen,) or a model parameter that characterises the infectiousness of that pathogen.
 
 To summarise, DPOMP models and associated methods allow us to learn about a given system of interest (e.g. an ecosystem, pandemic, chemical reaction, and so on,) even in when the available data is limited ['partial'].
+
+### Scientific applications
+Discrete POMP, and discrete-state-space models in general, have a wide range of applications including:
+- Epidemiological modelling (e.g. SEIR models)
+- Ecology (e.g. predator-prey dynamics)
+- Many other potential use cases, e.g. physics; chemical reactions; social media.
 
 ## Package features
 

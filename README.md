@@ -12,6 +12,11 @@ This package contains tools for Bayesian inference and simulation of DPOMP model
 - Discrete-state-space Partially Observed Markov Processes, in Julia.
 - Includes automated tools for convergence diagnosis and analysis.
 
+### Applications
+- Epidemiological modelling (e.g. SEIR models)
+- Ecology (e.g. predator-prey dynamics)
+- Many other potential use cases, e.g. physics; chemical reactions; social media.
+
 ### Algorithms
 
 The package implements several different customisable algorithms for Bayesian parameter inference, including:
