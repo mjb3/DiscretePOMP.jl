@@ -6,4 +6,5 @@ makedocs(sitename="DiscretePOMP.jl docs", pages = ["index.md", "models.md", "exa
 # - local version deploys to build dir
 deploydocs(
     repo = "github.com/mjb3/DiscretePOMP.jl.git",
+    devbranch = "main",
 )
