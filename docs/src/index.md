@@ -1,12 +1,10 @@
 # Introduction
 
-**DiscretePOMP.jl** - *Bayesian inference for Discrete-state-space Partially Observed Markov Processes in Julia.*
-
 **DiscretePOMP.jl** is a package for:
 
-* Bayesian parameter inference, and
-* Simulation of,
-* *Discrete*-state-space *Partially Observed Markov Processes*, in Julia.
+* **Bayesian parameter inference**, and
+* **Simulation** of,
+* **Discrete**-state-space **Partially Observed Markov Processes**, in Julia.
 * It also includes automated tools for things like convergence diagnosis, model assessment and analysis.
 
 ## What are DPOMP models?
