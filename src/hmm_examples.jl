@@ -62,8 +62,6 @@ test latex eqn:
     p = partial_gaussian_obs_model(1.0, seq = 2)
 
 """
-
-## generic Gaussian obs model generator
 function partial_gaussian_obs_model(σ::Float64 = 2.0; seq = 2:2, y_seq = seq)
     # do some preliminary computation
     tmp1 = log(1 / (sqrt(2 * pi) * σ))
