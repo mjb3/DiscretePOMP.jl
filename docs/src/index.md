@@ -38,8 +38,8 @@ Discrete POMP, and discrete-state-space models in general, have a wide range of 
 The algorithms implemented by the package for simulation and inference include:
 * The Gillespie direct method algorithm
 * Data-augmented Markov chain Monte Carlo (MCMC)
-* The model-based-proposal (MBP) algorithm[^1].
-* Sequential Monte Carlo (i.e. particle filters)
+* The model-based-proposal (MBP) algorithm[^1]
+* Particle filters (i.e. Sequential Monte Carlo)
 * SMC^2[^2], or iterative-batch-importance sampling (IBIS)
 
 [^1]: C. M. Pooley, S. C. Bishop, and G. Marion. Using model-based proposals for fast parameter inference on discrete state space, continuous-time Markov processes. *Journal of The Royal Society Interface*, 12(107):20150225–20150225, May 2015.
