@@ -20,6 +20,14 @@ Individuals are also assumed to 'migrate' between states randomly at rates defin
 ### Bayesian inference
 
 
+```math
+\pi(\theta|y) = \frac{\pi(\theta) \pi(y|\theta)}{\pi(y)} \propto \pi(\theta) \pi(y|\theta)
+\end{equation}
+```
+
+```math
+\pi(y|\theta) := f(\theta)
+```
 
 ## Defining models
 

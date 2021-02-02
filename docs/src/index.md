@@ -38,8 +38,13 @@ Discrete POMP, and discrete-state-space models in general, have a wide range of 
 The algorithms implemented by the package for simulation and inference include:
 * The Gillespie direct method algorithm
 * Data-augmented Markov chain Monte Carlo (MCMC)
+* The model-based-proposal (MBP) algorithm[^1].
 * Sequential Monte Carlo (i.e. particle filters)
-* SMC^2, or iterative-batch-importance sampling (IBIS)
+* SMC^2[^2], or iterative-batch-importance sampling (IBIS)
+
+[^1]: C. M. Pooley, S. C. Bishop, and G. Marion. Using model-based proposals for fast parameter inference on discrete state space, continuous-time Markov processes. *Journal of The Royal Society Interface*, 12(107):20150225–20150225, May 2015.
+
+[^2]: N. Chopin, P. E. Jacob, and O. Papaspiliopoulos. SMC^2 : an efficient algorithm for sequential analysis of state space models: Sequential Analysis of State Space Models. *Journal of the Royal Statistical Society: Series B (Statistical Methodology)*, 75(3):397–426, June 2013.
 
 A number of well-known models are provided as predefined examples:
 * SIR, SEIR, and other epidemiological model
