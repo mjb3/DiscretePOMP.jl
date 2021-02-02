@@ -31,6 +31,7 @@ The package includes a set of predefined models, which can be instantiated easil
 import DiscretePOMP               # simulation / inference for epidemiological models
 import Random               # other assorted packages used incidentally
 import DataFrames
+import Distributions
 
 model = generate_model("SIS", [100,1])
 ```
