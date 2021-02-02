@@ -21,10 +21,12 @@ This package contains tools for Bayesian inference and simulation of DPOMP model
 
 The package implements several different customisable algorithms for Bayesian parameter inference, including:
 - Data-augmented MCMC
-- Particle filters
-- Iterative-batch-importance sampling
+- Particle filters (i.e. Sequential Monte Carlo)
+- Iterative-batch-importance sampling (e.g. 'SMC^2')
 
-## Installation
+## Getting started
+
+### Package installation
 
 The package is not registered and must be added via the package manager Pkg.
 From the Julia REPL type `]` to enter the Pkg mode, and run:
@@ -33,8 +35,8 @@ From the Julia REPL type `]` to enter the Pkg mode, and run:
 pkg> add https://github.com/mjb3/DiscretePOMP.jl
 ```
 
-## Usage
+### Usage
 
-The [package documentation][docs] has more information and examples.
+See the [package documentation][docs] for instructions and examples.
 
 [docs]: https://mjb3.github.io/DiscretePOMP.jl/stable

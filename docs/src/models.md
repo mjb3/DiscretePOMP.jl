@@ -25,7 +25,7 @@ model.prior = Distributions.Product(Distributions.Uniform.(zeros(2), [0.01, 0.5]
 
 Models can also be specified manually. For example, the model we just created could also be instantiated like so:
 
-```
+``` julia
 # rate function
 function sis_rf!(output, parameters::Array{Float64, 1}, population::Array{Int64, 1})
     output[1] = parameters[1] * population[1] * population[2]
