@@ -6,9 +6,9 @@ This section provides instructions for generating model instances in **DiscreteP
 
 The package includes a set of predefined models, which can be instantiated easily:
 
-```@repl 1
-import DiscretePOMP               # simulation / inference for epidemiological models
-import Distributions        # priors
+``` julia
+using DiscretePOMP      # simulation / inference for epidemiological models
+import Distributions    # priors
 
 model = generate_model("SIS", [100,1])
 ```
@@ -17,7 +17,7 @@ model = generate_model("SIS", [100,1])
 
 DPOMPModels are mutable ``structs``, which means that their properties can be altered after they have been instantiated. For example, we could specify a prior:
 
-```@repl 1
+``` julia
 model.prior = Distributions.Product(Distributions.Uniform.(zeros(2), [0.01, 0.5]))
 ```
 
@@ -62,8 +62,7 @@ The canonical Kermack-McKendrick susceptible-infectious-recovered model is perha
 <img src="https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/master/docs/img/sir.png" alt="SIR model" style="height: 80px;"/>
 ```
 
-```@repl 1
-using DiscretePOMP
+``` julia
 generate_model("SIR", [100, 1, 0])
 ```
 
@@ -74,8 +73,8 @@ The susceptible-infectious model is the simplest conceptual example of this clas
 <img src="https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/master/docs/img/si.png" alt="SI model" style="height: 80px;"/>
 ```
 
-```@repl 1
-generate_model("SI", [100, 1]);
+``` julia
+generate_model("SI", [100, 1])
 ```
 
 #### SIS model
@@ -85,8 +84,8 @@ Another common derivative of the SIR model.
 <img src="https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/master/docs/img/sis.png" alt="SIS model" style="height: 90px;"/>
 ```
 
-```@repl 1
-generate_model("SIS", [100, 1]);
+``` julia
+generate_model("SIS", [100, 1])
 ```
 
 #### SEI model
@@ -95,8 +94,8 @@ The SEI model includes an 'exposed' state, i.e. for modelling communicable disea
 ```@raw html
 <img src="https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/master/docs/img/sei.png" alt="SEI model" style="height: 80px;"/>
 ```
-```@repl 1
-generate_model("SEI", [100, 0, 1]);
+``` julia
+generate_model("SEI", [100, 0, 1])
 ```
 
 #### SEIR model
@@ -106,8 +105,8 @@ Somewhat obviously, the SEIR model concept combines the SEI with the SIR.
 <img src="https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/master/docs/img/seir.png" alt="SEIR model" style="height: 80px;"/>
 ```
 
-```@repl 1
-generate_model("SEIR", [100, 0, 1, 0]);
+``` julia
+generate_model("SEIR", [100, 0, 1, 0])
 ```
 
 ### Others
@@ -118,8 +117,8 @@ generate_model("SEIR", [100, 0, 1, 0]);
 <img src="https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/master/docs/img/lotka.png" alt="Lotka model" style="height: 80px;"/>
 ```
 
-```@repl 1
-generate_model("LOTKA", [70, 70]);
+``` julia
+generate_model("LOTKA", [70, 70])
 ```
 
 #### Ross-MacDonald two-species Malaria model
@@ -128,6 +127,6 @@ generate_model("LOTKA", [70, 70]);
 <img src="https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/master/docs/img/rossmac.png" alt="Malaria model" style="height: 240px;"/>
 ```
 
-```@repl 1
-generate_model("ROSSMAC", [100, 0, 400, 50]);
+``` julia
+generate_model("ROSSMAC", [100, 0, 400, 50])
 ```

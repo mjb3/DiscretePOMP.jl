@@ -25,7 +25,12 @@ Individuals are also assumed to 'migrate' back and forth between states, randoml
 ```
 
 ```math
-\pi(y|\theta) := f(\theta)
+\begin{aligned}
+\theta := model parameters
+\pi(\theta|y) := posterior distribution \\
+\pi(y|\theta) := f(\theta)  \\
+\pi(y) := model evidence
+\end{aligned}
 ```
 
 ## Defining models
@@ -34,7 +39,7 @@ Individuals are also assumed to 'migrate' back and forth between states, randoml
 
 The package includes a set of predefined models, which can be instantiated easily:
 
-```@repl 1
+``` julia
 import DiscretePOMP               # simulation / inference for epidemiological models
 import Random               # other assorted packages used incidentally
 import DataFrames
@@ -53,7 +58,7 @@ The main purpose of the package is to provide an automated framework for **param
 
 The package implements the Gillespie direct method algorithm for simulation. It can be invoked thusly:
 
-```@repl 1
+``` julia
 Random.seed!(1)
 theta = [0.003, 0.1]
 x = gillespie_sim(model, theta)	  # run simulation
@@ -70,7 +75,7 @@ Here we demonstrate the package's functionality for [single-model] Bayesian infe
 
 First though, it is necessary to define an appropriate prior distribution, using the **Distributions** package:
 
-```@repl 1
+``` julia
 model.prior = Distributions.Product(Distributions.Uniform.(zeros(2), [0.1, 0.5]))
 ```
 
@@ -78,7 +83,7 @@ model.prior = Distributions.Product(Distributions.Uniform.(zeros(2), [0.1, 0.5])
 
 The first inference algorithm is MCMC; is a form of rejection sampling. The default number of Markov chains run for an analysis is three, and the Gelman-Rubin convergence diagnostic is carried out by default:
 
-```@repl 1
+``` julia
 results = run_mcmc_analysis(model, y)
 tabulate_results(results)
 # trace plot of contact parameter (optional)
@@ -92,7 +97,7 @@ println(plot_parameter_trace(results, 1))
 ### IBIS
 The second class of algorithm we demonstrate here, is iterative-batch-importance sampling.
 
-```@repl 1
+``` julia
 results = run_ibis_analysis(model, y)
 tabulate_results(results)
 ```
@@ -107,7 +112,7 @@ Finally, we describe how to compare models using the **Bayes factor**. First, we
 <img src="https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/master/docs/img/seis.png" alt="SEIS model" style="height: 80px;"/>
 ```
 
-```@repl 1
+``` julia
 # define model to compare against
 seis_model = generate_model("SEIS", [100,0,1])
 seis_model.prior = Distributions.Product(Distributions.Uniform.(zeros(3), [0.1,0.5,0.5]))
@@ -118,7 +123,7 @@ seis_model.obs_model = partial_gaussian_obs_model(2.0, seq = 3, y_seq = 2)
 
 Finally, we run the comparison, tabulate and plot the results:
 
-```@repl 1
+``` julia
 # run comparison
 models = [model, seis_model]
 mcomp = run_model_comparison_analysis(models, y)

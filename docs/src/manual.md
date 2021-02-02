@@ -26,7 +26,7 @@ ARQMCMCSample
 
 ## Functions
 
-### Models
+### Model helpers
 ```@docs
 generate_model
 generate_custom_model

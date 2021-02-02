@@ -1,6 +1,6 @@
 using Documenter, DiscretePOMP
 
-makedocs(sitename="DiscretePOMP.jl docs", pages = ["index.md", "models.md", "examples.md", "manual.md"])
+makedocs(sitename="DiscretePOMP.jl docs", pages = ["index.md", "examples.md", "models.md", "manual.md"])
 
 ## nb. called by GitHub Actions wf
 # - local version deploys to build dir

@@ -1,6 +1,6 @@
 # Introduction
 
-**DiscretePOMP.jl** is a package for:
+``DiscretePOMP.jl`` is a package for:
 
 * **Bayesian parameter inference**, and
 * **Simulation** of,
@@ -58,10 +58,11 @@ In practice though, this affects only the applied examples and naming convention
 ## Installation
 As a prerequisite, the package naturally requires a working installation of the Julia programming language. The package is not yet registered but can nonetheless must be added via the package manager Pkg in the usual way.
 
-From the Julia REPL type `]` to enter the Pkg mode, and run:
+From the ``Julia`` REPL, run:
 
 ```
-pkg> add https://github.com/mjb3/DiscretePOMP.jl
+using Pkg
+Pkg.add(url="https://github.com/ScottishCovidResponse/DataRegistryUtils.jl")
 ```
 
 See the package [code repository](https://github.com/mjb3/DiscretePOMP.jl) to inspect the source code.
