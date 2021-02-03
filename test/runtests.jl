@@ -7,16 +7,17 @@ import Test
 Random.seed!(1)
 
 Test.@testset "package_test" begin
-    ## getting started
+    theta = [0.003, 0.1]
     # data_fp = "https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/master/data/pooley.csv"
     data_fp = "data/pooley.csv"
+
+    ## getting started
     y = get_observations(data_fp) # val_seq=2:3
     model = generate_model("SIS", [100,1])
     Test.@test true
 
     ## simulation # NB. first define the SIS 'model' variable, per above
     Test.@testset "simulation" begin
-        theta = [0.003, 0.1]
         x = gillespie_sim(model, theta)	    # run simulation
         println(plot_trajectory(x))			# plot (optional)
         Test.@test true
