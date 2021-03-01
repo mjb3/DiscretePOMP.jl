@@ -56,7 +56,7 @@ run_model_comparison_analysis
 ```@docs
 get_observations
 tabulate_results
-print_results
+save_to_file
 get_particle_filter_lpdf
 ```
 

@@ -2,6 +2,7 @@
 **Bayesian inference for Discrete-state-space Partially Observed Markov Processes in Julia**
 
 ![Documentation](https://github.com/mjb3/DiscretePOMP.jl/workflows/Documentation/badge.svg)
+![Package tests](https://github.com/mjb3/DiscretePOMP.jl/workflows/Tests/badge.svg)
 
 This package contains tools for Bayesian inference and simulation of DPOMP models. See the [docs][docs].
 

@@ -61,7 +61,7 @@ export SimResults, ImportanceSample, RejectionSample, MCMCSample, ModelCompariso
 export generate_model, generate_custom_model, partial_gaussian_obs_model
 export gillespie_sim, run_mcmc_analysis, run_ibis_analysis, run_model_comparison_analysis
 export plot_trajectory, plot_parameter_trace, plot_parameter_marginal, plot_parameter_heatmap, plot_model_comparison
-export get_observations, tabulate_results, print_results, get_particle_filter_lpdf
+export get_observations, tabulate_results, save_to_file, get_particle_filter_lpdf
 export run_custom_mcmc_analysis, generate_custom_particle
 # export ARQMCMC
 export ARQModel, ARQMCMCSample, run_arq_mcmc_analysis

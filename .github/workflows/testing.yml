@@ -1,4 +1,4 @@
-name: DiscretePOMP testing
+name: Tests
 
 # run workflow on push
 on:

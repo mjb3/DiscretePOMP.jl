@@ -84,7 +84,7 @@ function print_autocorrelation(acr::AutocorrelationResults, fpath::String)
 end
 
 ## print arq mcmc results
-function print_results(results::ARQMCMCSample, dpath::String)
+function save_to_file(results::ARQMCMCSample, dpath::String)
     isdir(dpath) || mkpath(dpath)                       # check dir
     open(string(dpath, "metadata.csv"), "w") do f       # print metadata
         write(f, "alg,np,adapt_period,sample_limit,sample_dispersal,run_time,fx,bme\narq,")

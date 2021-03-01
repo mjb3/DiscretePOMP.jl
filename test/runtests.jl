@@ -8,7 +8,7 @@ Random.seed!(1)
 
 Test.@testset "package_test" begin
     theta = [0.003, 0.1]
-    # data_fp = "https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/master/data/pooley.csv"
+    # data_fp = "https://raw.githubusercontent.com/mjb3/DiscretePOMP.jl/main/data/pooley.csv"
     data_fp = "data/pooley.csv"
 
     ## getting started
@@ -20,6 +20,7 @@ Test.@testset "package_test" begin
     Test.@testset "simulation" begin
         x = gillespie_sim(model, theta)	    # run simulation
         println(plot_trajectory(x))			# plot (optional)
+        println(x)
         Test.@test true
     end
 

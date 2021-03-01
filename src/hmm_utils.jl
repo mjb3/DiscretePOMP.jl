@@ -31,7 +31,8 @@ function get_observations(fpath::String)
 end
 
 ## save simulation results to file
-function print_results(results::SimResults, dpath::String)
+# NB. function overloaded per docs below
+function save_to_file(results::SimResults, dpath::String)
     # check dir
     isdir(dpath) || mkpath(dpath)
     # print sequence
@@ -151,16 +152,16 @@ end
 
 ## print importance sample results
 """
-    print_results
+    save_to_file(results, dpath)
 
-Print the results of a parameter inference analysis to file.
+Save the results of an analysis (simulation or inference) to file.
 
 **Parameters**
 - `samples`     -- a data structure of type `SimResults`, `ImportanceSample`, `MCMCSample` or `ARQMCMCSample`.
 - `dpath`       -- the directory where the results will be saved.
 
 """
-function print_results(results::ImportanceSample, dpath::String)
+function save_to_file(results::ImportanceSample, dpath::String)
     # check dir
     isdir(dpath) || mkpath(dpath)
     # print metadata
@@ -174,7 +175,7 @@ end
 
 
 ## print MCMC sample
-function print_results(results::MCMCSample, dpath::String)
+function save_to_file(results::MCMCSample, dpath::String)
     # check dir
     isdir(dpath) || mkpath(dpath)
     # print metadata
@@ -191,7 +192,7 @@ end
 ## results summary
 #- `proposals`   -- display proposal analysis (MCMC only).
 """
-    tabulate_results
+    tabulate_results(results)
 
 Display the results of an inference analysis.
 

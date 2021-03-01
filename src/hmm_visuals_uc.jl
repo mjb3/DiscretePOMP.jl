@@ -1,20 +1,20 @@
 
 ## trajectory
 """
-    plot_trajectory(x)
+    plot_trajectory(x; plot_index=[:])
 
 Plot the trajectory of a a DGA simulation using [UnicodePlots.jl](https://github.com/Evizero/UnicodePlots.jl).
 
-The only input parameter required is `x` of type `SimResults`, i.e. from a call to `gillespie_sim`.
+The only input parameter required is `x` of type `SimResults`, i.e. from a call to `gillespie_sim`. All system states are plotted by default, but a subset can be specified by passing an integer array to the `plot_index` option, which contains the indices of the desired subset. E.g. [1,2] for the first two 'compartments' only.
 """
-function plot_trajectory(x::SimResults)
+function plot_trajectory(x::SimResults; plot_index=collect(1:length(x.particle.initial_condition)))
     ## collect time and population
     t = zeros(length(x.particle.trajectory) + 1)
-    pop = zeros(Int64, length(x.particle.trajectory) + 1, length(x.particle.initial_condition))
-    pop[1,:] .= x.particle.initial_condition
+    pop = zeros(Int64, length(x.particle.trajectory) + 1, length(plot_index))
+    pop[1,:] .= x.particle.initial_condition[plot_index]
     for i in eachindex(x.particle.trajectory)
         t[i+1] = x.particle.trajectory[i].time
-        pop[i+1, :] .= x.population[i]
+        pop[i+1, :] .= x.population[i][plot_index]
     end
     ## plot
     p = UnicodePlots.lineplot(t, pop[:,1], title = string(x.model_name, " simulation"), name = string(x.model_name[1]), ylim = [0, maximum(pop) + 1])#
