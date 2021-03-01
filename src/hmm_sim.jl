@@ -93,7 +93,8 @@ function gillespie_sim(model::HiddenMarkovModel, theta::Array{Float64, 1}, obser
     # run
     for i in eachindex(y)
         iterate_particle!(p, pop_v, model, t, y[i])
-        observe && (y[i].val .= model.obs_function(y[i], p.final_condition, theta))
+        # observe && (y[i].val .= model.obs_function(y[i], p.final_condition, theta))
+        observe && model.obs_function(y[i], p.final_condition, theta)
         t = y[i].time
     end
     # return sequence

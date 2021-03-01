@@ -14,6 +14,7 @@ import StatsBase
 import Random
 import Statistics
 import PrettyTables
+import UnicodePlots     # https://github.com/Evizero/UnicodePlots.jl
 
 ## constants
 const C_ALG_STD = "ARQ"
@@ -42,6 +43,7 @@ include("arq_alg_daug.jl")
 ## common functions, printing, etc
 include("arq_utils.jl")
 ## visualisation tools
+include("cmn_visual_uc.jl")
 include("arq_visualisation_uc.jl")
 
 ## for internal use (called by public functions)

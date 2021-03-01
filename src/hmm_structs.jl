@@ -76,7 +76,7 @@ The results of a simulation, including the full state trajectory.
 **Fields**
 - `model_name`      -- string, e,g, `"SIR"`.
 - `particle`        -- the 'trajectory' variable, of type `Particle`.
-- `population`      -- records the final system state.
+- `population`      -- records the complete system state over time.
 - `observations`    -- simulated observations data (an `Array` of `Observation` types.)
 
 """

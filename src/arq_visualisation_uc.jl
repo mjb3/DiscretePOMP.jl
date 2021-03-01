@@ -23,6 +23,7 @@ function plot_autocorrelation(autocorrelation::AutocorrelationResults)
     return p
 end
 
+## traceplots (from cmn)
 function plot_parameter_trace(sample::ARQMCMCSample, parameter::Int64)
     return plot_parameter_trace(sample.samples, parameter)
 end

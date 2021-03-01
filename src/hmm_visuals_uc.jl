@@ -17,47 +17,41 @@ function plot_trajectory(x::SimResults; plot_index=collect(1:length(x.particle.i
         pop[i+1, :] .= x.population[i][plot_index]
     end
     ## plot
-    p = UnicodePlots.lineplot(t, pop[:,1], title = string(x.model_name, " simulation"), name = string(x.model_name[1]), ylim = [0, maximum(pop) + 1])#
+    p = UnicodePlots.lineplot(t, pop[:,1], title = string(x.model_name, " simulation"), name = string(x.model_name[plot_index[1]]), ylim = [0, maximum(pop) + 1])#
     for i in 2:size(pop, 2)
-        UnicodePlots.lineplot!(p, t, pop[:,i], name = string(x.model_name[i]))
+        UnicodePlots.lineplot!(p, t, pop[:,i], name = string(x.model_name[plot_index[i]]))
     end
     UnicodePlots.xlabel!(p, "time")
     UnicodePlots.ylabel!(p, "population")
     return p
 end
 
-##
-"""
-    plot_parameter_trace(mcmc, [parameter::Int64])
-
-Produce a trace plot of samples using [UnicodePlots.jl](https://github.com/Evizero/UnicodePlots.jl).
-
-The `mcmc` input is of type `MCMCSample`, `ARQMCMCSample` or `RejectionSample`. The `parameter` index can be optionally specified, else all parameters are plotted and returned as an `Array` of unicode plots.
-"""
-function plot_parameter_trace(sample::RejectionSample, parameter::Int64)
-    x = 1:size(sample.theta, 2)
-    yl = [floor(minimum(sample.theta[parameter,:,:]), sigdigits = 2), ceil(maximum(sample.theta[parameter,:,:]), sigdigits = 2)]
-    p = UnicodePlots.lineplot(x, sample.theta[parameter,:,1], title = string("θ", Char(8320 + parameter), " traceplot."), ylim = yl)
-    for i in 2:size(sample.theta, 3)
-        UnicodePlots.lineplot!(p, sample.theta[parameter,:,i])
-    end
-    UnicodePlots.xlabel!(p, "sample")
-    UnicodePlots.ylabel!(p, string("θ", Char(8320 + parameter)))
-    return p
-end
+include("cmn_visual_uc.jl")
 
 ## MCMC
 function plot_parameter_trace(sample::MCMCSample, parameter::Int64)
     return plot_parameter_trace(sample.samples, parameter)
 end
 
+## ARQ
+function plot_parameter_trace(sample::ARQMCMCSample, parameter::Int64)
+    return ARQMCMC.plot_parameter_trace(sample.samples, parameter)
+end
+function plot_parameter_trace(sample::ARQMCMCSample)
+    return plot_parameter_trace.([sample], [i for i in eachindex(sample.sample_interval)])
+end
+
 ## all parameters
 function plot_parameter_trace(sample::RejectionSample)
     return plot_parameter_trace.([sample], [i for i in eachindex(sample.mu)])
 end
+# - calls the above
 function plot_parameter_trace(sample::MCMCSample)
     return plot_parameter_trace(sample.samples)
 end
+# function plot_parameter_trace(results::ARQMCMCSample)
+#     ARQMCMC.plot_parameter_trace(results, parameter)
+# end
 
 ## marginal
 """
