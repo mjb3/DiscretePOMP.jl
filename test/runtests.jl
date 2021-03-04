@@ -51,6 +51,13 @@ Test.@testset "package_test" begin
         Test.@test test_stat(results.bme[1], 19.98)
     end
 
+    ## MBP IBIS
+    Test.@testset "mbpibis" begin
+        results = run_ibis_analysis(model, y; algorithm="MBPI")
+        tabulate_results(results)
+        println(results.bme[1])
+    end
+
     ## model comparison
     # define model to compare against
     # seis_model = generate_model("SEIS", [100,0,1])

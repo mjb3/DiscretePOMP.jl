@@ -1,5 +1,4 @@
-## NB. these aren't used for anything atm
-# NB. also note that parameter 'w' is typically aletered
+# NB. note that parameter 'w' is typically aletered
 
 ## basic multinomial resampler (inverse CDF method)
 function rs_multinomial(w::Array{Float64,1}, n::Int64 = length(w))

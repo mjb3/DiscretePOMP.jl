@@ -4,9 +4,9 @@
 include("hmm_resample.jl")
 
 ## compute effective sample size
-function compute_ess(w::Array{Float64,1})
-    return sum(w)^2 / sum(w.^2)
-end
+# function compute_ess(w::Array{Float64,1})
+#     return sum(w)^2 / sum(w.^2)
+# end
 
 ## i.e. SMC^2 algorithm (Chopin 2013)
 function run_pibis(model::HiddenMarkovModel, theta::Array{Float64, 2}, ess_rs_crit::Float64, ind_prop::Bool, alpha::Float64, np::Int64; n_props = 1)

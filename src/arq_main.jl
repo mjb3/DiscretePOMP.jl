@@ -2,6 +2,11 @@
 ## module
 module ARQMCMC
 
+## MOVE TO CMN **
+const C_DF_MCMC_STEPS = 50000
+const C_DF_MCMC_ADAPT = 0.2
+df_adapt_period(steps::Int64) = Int64(floor(steps * C_DF_MCMC_ADAPT))
+
 ## ARQ defaults
 const C_DF_ARQ_SL = 1       # sample limit
 const C_DF_ARQ_SR = 50      # inital sample distribution

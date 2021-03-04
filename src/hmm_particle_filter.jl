@@ -1,5 +1,9 @@
-
 #### particle filter ####
+
+## compute effective sample size
+function compute_ess(w::Array{Float64,1})
+    return sum(w)^2 / sum(w.^2)
+end
 
 ## iterate particle and evaluate cumulative w = g(x)
 function iterate_particles!(pop::Array{Int64,2}, cum_weight::Array{Float64,1}, model::HiddenMarkovModel, obs_i::Int64, parameters::Array{Float64,1}, t::Float64, tmax::Float64)
@@ -56,10 +60,12 @@ function partial_log_likelihood!(pop::Array{Int64,2}, model::HiddenMarkovModel, 
             output += log(cum_weight[end] / size(pop, 1))
             # resample particles (if < n, and rs = true)
             if obs_i < length(model.obs_data)
-                ## ADD ESS CRITERIA **********
-                # update old p and resample
-                old_p .= pop
-                fn_rs(pop, old_p, cum_weight)
+                ## ADD ESS CRITERIA ********** (for cum weights)
+                # if compute_ess(weight) < essc
+                    # update old p and resample
+                    old_p .= pop
+                    fn_rs(pop, old_p, cum_weight)
+                # end
             end
         end
         # reset sim parameters

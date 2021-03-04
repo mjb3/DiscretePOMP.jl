@@ -24,3 +24,19 @@ sample_interval = [0.0005, 0.02]
 rs = run_arq_mcmc_analysis(model, y, sample_interval)
 tabulate_results(rs)
 println(plot_parameter_trace(rs, 1))
+
+## MBP IBIS
+results = run_ibis_analysis(model, y; algorithm="MBPI")
+tabulate_results(results)
+
+## model comparison
+# define model to compare against
+seis_model = generate_model("SEIS", [100,0,1])
+seis_model.prior = Distributions.Product(Distributions.Uniform.(zeros(3), [0.1,0.5,0.5]))
+seis_model.obs_model = partial_gaussian_obs_model(2.0, seq = 3, y_seq = 2)
+
+# run comparison
+models = [model, seis_model]
+mcomp = run_model_comparison_analysis(models, y)
+tabulate_results(mcomp; null_index = 1)
+println(plot_model_comparison(mcomp))
