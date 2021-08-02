@@ -220,7 +220,7 @@ end
 """
     generate_custom_model(model_name, rate_function, initial_condition, m_transition; ... )
 
-Generates an `DPOMPModel` instance. Observation models are generated using the `partial_gaussian_obs_model` function, with ``σ = obs_error` (see that functions entry for further details.)
+Generates a `DPOMPModel` instance. Observation models are generated using the `partial_gaussian_obs_model` function, with ``σ = obs_error` (see that functions entry for further details.)
 
 **Parameters**
 - `model_name`          -- the model, e.g. "SIR", "SEIR-custom", etc.
