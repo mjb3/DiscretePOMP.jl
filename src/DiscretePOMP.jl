@@ -91,6 +91,13 @@ include("hmm_particle_filter.jl")
 include("hmm_ibis.jl")
 ## model comparison
 include("hmm_mcomp.jl")
+
+## generate private model
+function get_private_model(m::DPOMPModel, y::Array{Observation,1})
+    fnic() = m.initial_condition
+    return HiddenMarkovModel(m.model_name, size(m.m_transition,1), m.rate_function, fnic, generate_trans_fn(m.m_transition), m.obs_function, m.obs_model, y, m.prior, m.t0_index)
+end
+
 ## predefined models ###
 include("hmm_examples.jl")
 ## utils (e.g. printing to file) ###
@@ -341,7 +348,6 @@ function run_arq_mcmc_analysis(model::DPOMPModel, obs_data::Array{Observation,1}
     hmm = get_private_model(model, obs_data)
     return run_arq_mcmc_analysis(hmm, sample_interval; sample_offset=sample_offset, sample_dispersal=sample_dispersal, sample_limit=sample_limit, n_chains=n_chains, steps=steps, burnin=burnin, tgt_ar=tgt_ar, np=np, ess_crit=ess_crit)#, sample_cache=sample_cache
 end
-
 
 # ## constants
 # const C_ALG_STD = "ARQ"

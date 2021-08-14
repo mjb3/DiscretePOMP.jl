@@ -15,12 +15,6 @@ function generate_trans_fn(tm::Array{Int64})
     return fnt
 end
 
-## generate private model
-function get_private_model(m::DPOMPModel, y::Array{Observation,1})
-    fnic() = m.initial_condition
-    return HiddenMarkovModel(m.model_name, size(m.m_transition,1), m.rate_function, fnic, generate_trans_fn(m.m_transition), m.obs_function, m.obs_model, y, m.prior, m.t0_index)
-end
-
 ## uninformative prior distribution generator
 """
     generate_weak_prior(n)

@@ -229,7 +229,7 @@ end
 
 ## ADD GENERIC GIBBS RUN FN
 
-## Std MCMC, i.e. gelman diagnostic
+## standard DA-MCMC
 function run_std_mcmc(model::HiddenMarkovModel, theta_init::Array{Float64,2}, steps::Int64, adapt_period::Int64, fin_adapt::Bool, ppp::Float64, mvp::Int64)
     function x0_prop(theta::Array{Float64,1})
         x0 = generate_x0(model, theta)         # simulate initial particle
